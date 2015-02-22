@@ -1,0 +1,117 @@
+---
+title       : Slidify Presentation
+subtitle    : Data Science Class 9 Project Part 2
+author      : Blake Anderson
+job         : 
+framework   : html5slides        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : mathjax            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## You should use the State Point App to choice your fate.
+#### A Good and a Bad Wastewater Operator's Fate 
+![alt text](http://alruralwater.com/about/News/images/2012_Awards_3.jpg) ![alt text](http://www.salem-news.com/stimg/february102010/handcuffed_new_.jpg)
+
+
+--- .class #id 
+
+## The Difference between a good and bad Operator.
+###### Can an Operator keep his solids and bugs in the plant?
+![alt text](.//mod_1415118689814.jpg) 
+###### Picture above is bugs leaving a plant this can make you a bad operator. 
+
+--- .class #id
+### The State Point Analysis App can help you keep your bugs in your plant. 
+#### If the blue Underflow Line crosses the black Solids Flux Line, the Return Activated Sludge (RAS) flow needs to be increased. 
+<br />
+#### If the Red State Point is above the black line, you need to do everything possible to adjust the plant because your solids are almost certianly going into the river. 
+
+
+
+
+--- .class #id
+## A Bad Day
+```{r}
+Q_RAS=1
+```
+
+
+```{r, echo=FALSE}
+                MLSS <- 2
+                RAS_Q<- 1
+                INF_Q <- 10
+         # Calculating values for the State Point Plot 
+                x_MLSS=seq(0,20,0.1) # g/L
+                k=0.41 # Liters/gram
+                Vo=0.505 #ft/min
+                Vs=100/1000 #mg/L
+                Vr=15000 # mg/L
+                V_S=Vo*exp(-k*x_MLSS)*(x_MLSS/(x_MLSS+(Vs))) # ft/min
+                Clarifier_Area<-3.14*(113/2)^2*2           # Area of equipmlent                                   
+                                     
+         # Creating the lines and points for the graph
+                y_GS=(x_MLSS)*V_S*89.896    # State Point curve, 4.916 is a unit conversion
+                SP_x=(MLSS)                                # State Point x
+                SP_y=INF_Q/(Clarifier_Area)*(MLSS)*8345    # State Point y 8.345 is a unit conversion
+                OROL_Y=(INF_Q/Clarifier_Area)*(x_MLSS)*8345     # Overflow Rate Operating Line
+                UROL_X=x_MLSS[x_MLSS>MLSS]                 # Underflow Rate Operating Line x values
+                SLR=(INF_Q+RAS_Q)/Clarifier_Area*(UROL_X)*8345# Solids Loading Rate
+                UROL_Y=(UROL_X-SP_x)*(-RAS_Q/Clarifier_Area)*8345+SP_y  # Underflow Rate Operating Line y value
+         
+         # Acutal State Point Plot
+                plot(x=x_MLSS,y=y_GS, xlab='Mixed Liquor Suspended Solids (MLSS mg/L)',ylab="Settling Flux (GS) (lb/ft^2/day",main='State Point Graph',type="l")
+
+                points(SP_x,SP_y,col=2,lwd=10)  # State Point
+                lines(x=x_MLSS,y=OROL_Y,col=3,lwd=2) # Overflow Line
+                lines(x=UROL_X,y=UROL_Y,col=4,lwd=2,lty=2) # Underflow rate
+                legend(x=10,y=35,legend=c("Solids Flux Line","State Point","Overflow Rate","Underflow Rate"),col=c(1,2,3,4),lty=c(1,1,1,2),lwd=c(1,10,2,2))
+                
+RAS_Q=1
+
+```
+
+--- .class #id
+
+## RAS rate was increased, so the solids will stay in the plant.
+
+```{r}
+RAS_Q=1+RAS_Q
+```
+
+```{r, echo=FALSE}
+                MLSS <- 2
+                RAS_Q<- 2
+                INF_Q <- 10
+         # Calculating values for the State Point Plot 
+                x_MLSS=seq(0,20,0.1) # g/L
+                k=0.41 # Liters/gram
+                Vo=0.505 #ft/min
+                Vs=100/1000 #mg/L
+                Vr=15000 # mg/L
+                V_S=Vo*exp(-k*x_MLSS)*(x_MLSS/(x_MLSS+(Vs))) # ft/min
+                Clarifier_Area<-3.14*(113/2)^2*2           # Area of equipmlent                                   
+                                     
+         # Creating the lines and points for the graph
+                y_GS=(x_MLSS)*V_S*89.896    # State Point curve, 4.916 is a unit conversion
+                SP_x=(MLSS)                                # State Point x
+                SP_y=INF_Q/(Clarifier_Area)*(MLSS)*8345    # State Point y 8.345 is a unit conversion
+                OROL_Y=(INF_Q/Clarifier_Area)*(x_MLSS)*8345     # Overflow Rate Operating Line
+                UROL_X=x_MLSS[x_MLSS>MLSS]                 # Underflow Rate Operating Line x values
+                SLR=(INF_Q+RAS_Q)/Clarifier_Area*(UROL_X)*8345# Solids Loading Rate
+                UROL_Y=(UROL_X-SP_x)*(-RAS_Q/Clarifier_Area)*8345+SP_y  # Underflow Rate Operating Line y value
+         
+         # Acutal State Point Plot
+                plot(x=x_MLSS,y=y_GS, xlab='Mixed Liquor Suspended Solids (MLSS mg/L)',ylab="Settling Flux (GS) (lb/ft^2/day",main='State Point Graph',type="l")
+
+                points(SP_x,SP_y,col=2,lwd=10)  # State Point
+                lines(x=x_MLSS,y=OROL_Y,col=3,lwd=2) # Overflow Line
+                lines(x=UROL_X,y=UROL_Y,col=4,lwd=2,lty=2) # Underflow rate
+                legend(x=10,y=35,legend=c("Solids Flux Line","State Point","Overflow Rate","Underflow Rate"),col=c(1,2,3,4),lty=c(1,1,1,2),lwd=c(1,10,2,2))
+```
+
+
+
+

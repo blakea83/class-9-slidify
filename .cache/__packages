@@ -1,0 +1,13 @@
+base
+shiny
+shinyapps
+devtools
+MASS
+HistData
+lattice
+survival
+Formula
+Hmisc
+UsingR
+slidify
+knitr

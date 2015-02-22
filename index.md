@@ -11,30 +11,29 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## A Good and a Bad Wastewater Operator's Fate
+## You should use the State Point App to choice your fate.
+#### A Good and a Bad Wastewater Operator's Fate 
 ![alt text](http://alruralwater.com/about/News/images/2012_Awards_3.jpg) ![alt text](http://www.salem-news.com/stimg/february102010/handcuffed_new_.jpg)
-<br />Hero or Goat
+
 
 --- .class #id 
 
-## The Difference
+## The Difference between a good and bad Operator.
 ###### Can an Operator keep his solids and bugs in the plant?
 ![alt text](.//mod_1415118689814.jpg) 
+###### Picture above is bugs leaving a plant this can make you a bad operator. 
+
+--- .class #id
+### The State Point Analysis App can help you keep your bugs in your plant. 
+#### If the blue Underflow Line crosses the black Solids Flux Line, the Return Activated Sludge (RAS) flow needs to be increased. 
 <br />
-Bugs going out of the plant to a stream. An operator's nightmare
-
---- .class #id
-### The Solution is to use the State Point Analysis App. 
-If the green underflow line crosses the black Solids Flux Line, the Return
-Activated Sludge (RAS) flow needs to be increased.  If the Red State Point is 
-above the black line, you need to pull out every trick because your solids
-are almost destined to go into the river. 
+#### If the Red State Point is above the black line, you need to do everything possible to adjust the plant because your solids are almost certianly going into the river. 
 
 
 
 
 --- .class #id
-A Bad Day
+## A Bad Day
 
 ```r
 Q_RAS=1
@@ -45,7 +44,7 @@ Q_RAS=1
 
 --- .class #id
 
-RAS rate was increased, so the solids will stay in the plant.
+## RAS rate was increased, so the solids will stay in the plant.
 
 
 ```r
